@@ -12,7 +12,11 @@
       },
       template: '<input ng-hide="tmpl" type="file" />',
       link: function (scope, elem, attrs, ngModel) {
-        var input = elem.find('input')[0];
+        var element = elem.find('input');
+        var input = element[0];
+        if (attrs.accept) {
+          element.attr('accept', attrs.accept);
+        }
         var modeRef = {
           'array-buffer': 'ArrayBuffer',
           'binary-string': 'BinaryString',
